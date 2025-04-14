@@ -15,7 +15,7 @@
 ##
 ## La chaîne de caractère contenu dans _() est éligible à la traduction.
 
-define config.name = _("cybergarde_part_three")
+define config.name = _("Cybergarde partie trois")
 
 
 ## Détermine si le titre renseigné plus haut est affiché sur l'écran du menu
