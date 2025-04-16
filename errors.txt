@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 362: end of line expected.
+    l "Il y a eu un moment où il ne me parlait plus et je pensais être tranquille. Sauf que d'un coup, il m'envoie un lien vers un groupe Echord."*
+                                                                                                                                                  ^
+
+Ren'Py Version: Ren'Py 8.3.2.24090902
+Wed Apr 16 12:10:49 2025
