@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 362: end of line expected.
-    l "Il y a eu un moment où il ne me parlait plus et je pensais être tranquille. Sauf que d'un coup, il m'envoie un lien vers un groupe Echord."*
-                                                                                                                                                  ^
+File "game/script.rpy", line 481: reached end of line when expecting ':'.
+    if harceleur == True
+                        ^
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Wed Apr 16 12:10:49 2025
+Wed Apr 23 11:20:03 2025

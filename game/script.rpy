@@ -9,6 +9,7 @@ define l = Character('Lena', color="#000000")
 define h1 = Character('Harceleur 1', color="#000000")
 define h2 = Character('Harceleur 2', color="#000000")
 define h3 = Character('Harceleur 3', color="#000000")
+define cpe = Character('CPE', color="#000000")
 
 
 #characters
@@ -35,6 +36,7 @@ image bg_frontGate_day = "frontGate_day.jpg"
 image bg_frontGate_evening = "frontGate_evening.jpg"
 image bg_frontGate_night = "frontGate_night.jpg"
 image bg_courtyard_day = "courtyard_day.jpg"
+image bg_cpe_day = "bg_cpe_day.jpg"
 
 #roadToSchool
 image bg_roadToSchool_day = "roadToSchool_day.jpg"
@@ -334,7 +336,6 @@ label chapter4:
     menu:
         "Demander à Lena directement":
             $ lena_trust += 1
-            $ indice += 1
             jump demanderDirect
         "Chercher sur les réseaux sociaux":
             $ indice += 1
@@ -359,13 +360,16 @@ label demanderDirect:
     "Le choc s'empare de Yasmine, comment ose-t-il ?"
     l "J'étais naïve, alors je lui ai envoyé. Après ça tout a changé : il était horrible avec moi, me faisait du chantage. Sa gentillesse était une facade."
     l "Après ça, il m'a ordonné de prendre plus de photos, sinon il allait les diffuser sur internet. Et par peur, j'ai obéi à ses ordres."
-    l "Il y a eu un moment où il ne me parlait plus et je pensais être tranquille. Sauf que d'un coup, il m'envoie un lien vers un groupe Echord."*
-    l "En rejoignant le groupe, je me rends compte qu'il a déjà diffusé les photos à des centaines de personnes sur le groupe. Tous rigolaient, me sexualisaient, m'harceler..."
+    l "Il y a eu un moment où il ne me parlait plus et je pensais être tranquille. Sauf que d'un coup, il m'envoie un lien vers un groupe Echord."
+    l "En rejoignant le groupe, je me rends compte qu'il a déjà diffusé les photos à des centaines de personnes sur le groupe. Tous rigolaient, me sexualisaient, m'harcelaient..."
     l "Maintenant, ils ont mon adresse, là où j'étudie, et me menacent... Je ne sais pas quoi faire. L'harcèlement va jusque dans l'école, comme tu as pu voir."
     "Yasmine est bouche bée. Elle ne se rendait pas compte de la gravité de la situation."
     "Avoir à souffrir silencieusement, seule... Yasmine était admirative du courage de Lena."
 
+    jump chapter5
+
 label rechercheReseaux:
+    play music "audio/Covert_affair.mp3"
     "Yasmine décide de mener son enquête sur les réseaux sociaux"
     "Elle se rend sur le compte de Lena, des indices doivent forcément s'y trouver."
     "Yasmine parcourt les profils, fouille les commentaires."
@@ -373,7 +377,111 @@ label rechercheReseaux:
     "Plusieurs comptes qui harcèlent Lena dans les commentaires. Sur certaines photos de profil, elle peut reconnaître les harceleurs de son collège."
     "D'autres comptes quant à eux, reprennent des photos de Lena en les modifiant dans des situations compromettantes. Des scènes dénudées mais pas que."
     "Les commentaires sont remplis de haine et de moqueries. Certains sont si violents que l'estomac de Yasmine se retourne."
-    "Dans toute"
+    "Elle pouvait voir une fraction de la souffrance de Lena. Ce qu'elle doit vivre au quotidien est horrible."
 
+    jump chapter5
+
+label nePasComprendre:
+    "Si elle y réfléchit bien, qu'est-ce qu'elle pouvait bien faire dans cette situation ?"
+    if indice == 1:
+        "Lena est seule, face à plusieurs d'harceleurs."
+    "Yasmine ne peut pas aider son amie. C'est ce qu'elle s'était convaincue."
+    "Elle éteint son ordinateur. La pluie continue de tomber. Plus forte, presque en colère."
+    "La jeune fille ne pense pas pouvoir faire quoi que ce soit pour Lena. Comment pouvait-elle ? Elle sait qu'elle est lâche."
+    "Elle pourrait en parler à un adulte de confiance, mais elle a peur."
+    "Peur de quoi ? Des représailles ? De sortir du moule ? D'aider son amie ?"
+    "Yasmine se pose 1001 questions, avec pour seule réponse le silence de sa chambre."
+    scene bg_bedroom_night_lightOff
+    "Yasmine part se coucher pour affronter une nouvelle journée demain."
+
+    jump chapter5
+
+label chapter5:
+    scene bg_frontGate_day with fade
+    play music "audio/Morning.mp3"
+    "Yasmine se tient devant le portail de son école. Les événements de ces derniers jours la hantent encore."
+    "Aujourd'hui il fallait prendre une décision. Elle ne peut pas continuer comme ça plus longtemps."
+
+    menu:
+        "Soutenir Lena et prévenir un adulte":
+            $ lena_trust += 1
+            jump soutenirLena
+        
+        "Se venger en attaquant le garçon sur les réseaux" if indice == 2:
+            jump seVenger
+        
+        "Abandonner Lena":
+            $ lena_trust -= 1
+            jump trahirLena
+
+label soutenirLena:
+    "Il lui était impossible de rester éternellement dans le silence. Yasmine doit agir."
+    if harceleur == True:
+        "C'est vrai, elle a rejoint les harceleurs pour se moquer de Lena. Mais elle ne veut pas que cette erreur définisse la personne qu'elle est."
+        "Elle sait qu'elle a un bon fond et qu'elle aime Lena. C'était une erreur de sa part."
+    "Son amie avait besoin d'aide. Et elle ferait tout pour l'aider."
+    "Il est temps d'arrêter de garder tout ça entre eux. Les adultes pourraient les aider à résoudre la situation."
+    "Lena s'approche du portail de l'école. Ses yeux sont absents de toute étincelle de vie. Un sombre mélange d'émotions semble écrasé la jeune fille."
+    y "Lena ! Suis-moi s'il te plait, je ne peux plus te voir comme ça."
+    show Lena_sad_sleeves at center
+    l "..."
+    "Lena ne prononce aucun mot."
+    "Yasmine prend la main de Lena, elle compte se diriger au bureau du CPE."
+
+    scene bg_cpe_day with dissolve
+    "Dans la salle des bureaux du corps éducatif, Yasmine et Lena se tiennent devant le bureau de leur CPE."
+    cpe "Merci d’être venues me parler. Vous avez bien fait."
+    show Lena_sad_sleeves at center
+    l "Je… je voulais pas causer de problèmes."
+    y "Tu n’en causes pas. Ceux qui t’ont fait ça sont les seuls responsables."
+    cpe "Nous allons agir immédiatement. La police sera informée, et les élèves responsables seront sanctionnés."
+
+    scene bg_school_courtyard_day with fade
+    "Dans la cour du collège, Lena et Yasmine sont à nouveau ensemble."
+
+    l "Merci, Yasmine. Sans toi… je sais pas où j’en serais."
+    if harceleur == True:
+        y "Je tiens vraiment à m'excuser pour le comportement que j'ai eu il y a quelques temps. Je ne savais vraiment pas comment agir dans la situation et j'ai pris la pire décision."
+        if lena_trust == 1:
+            l "C'est pas grave vraiment. Je t'ai déjà pardonné. Peu de gens auraient su quoi faire dans la situation."
+        else:
+            l "Ne refais plus jamais ça. Je ne comptais plus te parler."
+    "Enfin les deux collégiennes peuvent aller de l'avant. Dans ce genre de situations, il est important de parler à un adulte de confiance."
+    "L'harcelement qu'a subi Lena ne disparaitra pas du jour au lendemain. Cependant, c'est un premier pas vers l'arrêt de l'harcelement et vers la guérison de Lena."
+    l "Tu crois que tout se passera bien."
+    y "J'en suis persuadée. Et je serai toujours là pour toi."
+
+    scene bg_black_screen with fade
+    centered "Parler, c’est briser le silence.\nUn simple soutien peut sauver une vie."
+    centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
+    centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
+    centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
+
+    return
+
+label seVenger:
+    "Yasmine ne supporte pas l’injustice. Elle décide de rendre coup pour coup."
+    "Elle fait demi-tour, finalement pour se rendre chez elle."
+    
+    scene bg_bedroom_day with fade
+    "Une fois arrivée chez elle, Yasmine allume son ordinateur."
+    "Si personne ne peut aider Lena, elle le fera. Et à sa manière."
+    "Elle utilise ses réseaux pour exposer les harceleurs, publier leur nom, des captures de leurs commentaires..."
+    "Yasmine reprend les techniques des harceleurs : des montages de leur visage, des commentaires les insultant. Elle veut combattre le feu par le feu."
+
+    scene bg_bedroom_night_lightOn with fade
+    "Cela fait plusieurs jours que Yasmine rend justice à Lena."
+    "Le fait-elle vraiment pour Lena ? Au fond d'elle, elle sait qu'elle aime les messages qu'elle envoie."
+    "Chaque menace et chaque insulte qu'elle vocifère lui procure le plus grand bien. Chaque montage ou deepfake qu'elle crée la fait rire aux éclats."
+    "Les réactions sont partagées. Certains la soutiennent, d'autres l’accusent de cyberharcèlement."
+    "Mais ils ne peuvent pas comprendre. Comment pouvait-il ? Ce n'était pas leur amie qui se faisait harceler."
+    "Les réactions sont partagées. Certains la soutiennent, d'autres l’accusent de cyberharcèlement."
+    "Lena quant à elle, n'a pas réagi à ce que faisait Yasmine."
+    "Dans sa chasse aux sorcières, Yasmine n'a pas pensé à contacter Lena."
+    if harceleur == True:
+        "Peut-être qu'elle se jettait corps et âme dans le cyberharcèlement des harceleurs pour se racheter."
+        "Yasmine sait que ce qu'elle a fait est mal. La culpabilité l'étouffe."
+
+    
 
     return
