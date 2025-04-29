@@ -495,6 +495,7 @@ label seVenger:
     centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
 
 label trahirLena:
+    stop music
     scene bg_classroom_day with fade
     "Yasmine évite le regard de Lena toute la journée."
     "Elle fait comme si de rien n'était. Comme si tout ce qu'elle sait n'exister pas."
