@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 481: reached end of line when expecting ':'.
-    if harceleur == True
-                        ^
+File "game/script.rpy", line 399: Line is indented, but the preceding stop sound statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    stop audio
+    ^
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Wed Apr 23 11:20:03 2025
+Tue Apr 29 09:46:47 2025

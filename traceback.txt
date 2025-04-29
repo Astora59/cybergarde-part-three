@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 415, in script
+    jump trahirLena
+ScriptError: could not find label 'trahirLena'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 415, in script
+    jump trahirLena
+  File "C:\Users\yamin\Downloads\renpy-8.3.2-sdk\renpy\ast.py", line 1699, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\yamin\Downloads\renpy-8.3.2-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'trahirLena'.
+
+Windows-10-10.0.26100 AMD64
+Ren'Py 8.3.2.24090902
+Cybergarde partie trois 1.0
+Tue Apr 29 09:43:26 2025

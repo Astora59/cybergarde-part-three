@@ -327,7 +327,6 @@ label rienFaire:
 
 label chapter4:
     scene bg_bedroom_night_lightOn with fade
-    play sound "audio/rainWindow.mp3" loop volume 0.5
     play music "audio/Late Night Radio.mp3" fadeout 1.0 loop
     "Assise à son bureau, lumière tamisée, Yasmine tape frénétiquement sur son clavier."
     "La pluie claque contre la vitre. Elle veut comprendre. Elle veut agir."
@@ -393,9 +392,8 @@ label nePasComprendre:
     "Yasmine se pose 1001 questions, avec pour seule réponse le silence de sa chambre."
     scene bg_bedroom_night_lightOff
     "Yasmine part se coucher pour affronter une nouvelle journée demain."
-
     jump chapter5
-
+    
 label chapter5:
     scene bg_frontGate_day with fade
     play music "audio/Morning.mp3"
@@ -436,7 +434,7 @@ label soutenirLena:
     y "Tu n’en causes pas. Ceux qui t’ont fait ça sont les seuls responsables."
     cpe "Nous allons agir immédiatement. La police sera informée, et les élèves responsables seront sanctionnés."
 
-    scene bg_school_courtyard_day with fade
+    scene bg_courtyard_day with fade
     "Dans la cour du collège, Lena et Yasmine sont à nouveau ensemble."
 
     l "Merci, Yasmine. Sans toi… je sais pas où j’en serais."
@@ -451,7 +449,10 @@ label soutenirLena:
     l "Tu crois que tout se passera bien."
     y "J'en suis persuadée. Et je serai toujours là pour toi."
 
-    scene bg_black_screen with fade
+    scene bg_black_screen with fade:
+        xalign 0.5
+        yalign 0.2
+        zoom 2.0
     centered "Parler, c’est briser le silence.\nUn simple soutien peut sauver une vie."
     centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
@@ -464,6 +465,7 @@ label seVenger:
     "Elle fait demi-tour, finalement pour se rendre chez elle."
     
     scene bg_bedroom_day with fade
+    play music "audio/Symmetry.mp3" fadeout 1.0 loop
     "Une fois arrivée chez elle, Yasmine allume son ordinateur."
     "Si personne ne peut aider Lena, elle le fera. Et à sa manière."
     "Elle utilise ses réseaux pour exposer les harceleurs, publier leur nom, des captures de leurs commentaires..."
@@ -481,7 +483,38 @@ label seVenger:
     if harceleur == True:
         "Peut-être qu'elle se jettait corps et âme dans le cyberharcèlement des harceleurs pour se racheter."
         "Yasmine sait que ce qu'elle a fait est mal. La culpabilité l'étouffe."
+    "Ce n'est qu'une question de temps avant que Yasmine ne se fasse convoquer pour son cybeharcèlement..."
 
-    
+    scene bg_black_screen with fade:
+        xalign 0.5
+        yalign 0.2
+        zoom 2.0
+    centered "Se venger par le cyberharcèlement, c’est choisir de blesser au lieu de guérir — tu ne répares rien, tu reproduis ce qui a détruit."
+    centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
+    centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
+    centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
+
+label trahirLena:
+    scene bg_classroom_day with fade
+    "Yasmine évite le regard de Lena toute la journée."
+    "Elle fait comme si de rien n'était. Comme si tout ce qu'elle sait n'exister pas."
+    "Elle ne veut pas s'impliquer. Trop lourd. Trop dangereux."
+    "Elle se convainc que ce n'est pas son rôle. Que quelqu’un d’autre finira bien par faire quelque chose."
+    "Petit à petit, Yasmine s'éloigne de Lena, la laissant plus seule que jamais."
+
+    scene bg_bedroom_night_lightOff with dissolve
+    "Le soir venu, Yasmine est allongée sur son lit. Le silence est pesant."
+    "La pluie recommence à tomber, mais cette fois, elle ne trouve aucun apaisement dans son bruit."
+    "Elle se sent vide. Et lâche."
+
+    scene bg_black_screen with fade:
+        xalign 0.5
+        yalign 0.2
+        zoom 2.0
+    centered "Se taire, c’est laisser la peur gagner — face au cyberharcèlement, chaque silence est une complicité de trop."
+    centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
+    centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
+    centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
+
 
     return
