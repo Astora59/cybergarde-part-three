@@ -137,6 +137,8 @@ label start:
     "On aurait dit que le monde s'écroulait sur Lena. Ce n'est pas normal. Elle est si enjouée d'habitude."
 
     menu :
+        "Que dois-je faire ?"
+
         "Insister gentiment":
             $ lena_trust += 1
             jump insister
@@ -427,7 +429,7 @@ label soutenirLena:
     "Yasmine prend la main de Lena, elle compte se diriger au bureau du CPE."
 
     scene bg_cpe_day with dissolve
-    "Dans la salle des bureaux du corps éducatif, Yasmine et Lena se tiennent devant le bureau de leur CPE."
+    "Dans les bureaux de la vie scolaire, Yasmine et Lena se tiennent devant la porte du bureau de leur CPE."
     cpe "Merci d’être venues me parler. Vous avez bien fait."
     show Lena_sad_sleeves at center
     l "Je… je voulais pas causer de problèmes."
