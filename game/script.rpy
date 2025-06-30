@@ -114,6 +114,8 @@ default harcelement = False
 default harceleur = False
 default ignorer = False
 default indice = 0
+default good_choice = 0
+default bad_choice = 0
 
 # Le jeu commence ici
 label start:
@@ -137,13 +139,15 @@ label start:
     "On aurait dit que le monde s'écroulait sur Lena. Ce n'est pas normal. Elle est si enjouée d'habitude."
 
     menu :
-        "Que dois-je faire ?"
+        "Yasmine doit-elle insister ?"
 
         "Insister gentiment":
             $ lena_trust += 1
+            $ good_choice += 1
             jump insister
         "Changer de sujet":
             jump changerSujet
+            $ bad_choice += 1
     
 label insister:
     "Yasmine pose les vêtements sur son lit et s’assoit doucement à côté de Lena. Elle fronce légèrement les sourcils, visiblement préoccupée, mais garde une voix douce."
@@ -187,16 +191,20 @@ label chapter2:
     show Lena_sad at center
     "Lena serre les poings. Son corps se crispe. Elle ne répond pas, les dents serrées, les yeux fixés au sol."
     "Yasmine est témoin de la scène. Pourquoi tout un groupe semble mettre mal à l'aise Lena ?"
-    "Que doit faire Yasmine ?"
+    
 
     menu:
+        "Que doit faire Yasmine ?"
+        
         "Défendre Lena":
             $ lena_trust += 1
+            $ good_choice += 1
             $ harcelement = True
             jump defendreLena
 
         "Ignorer la scène":
             $ lena_trust -= 1
+            $ bad_choice += 1
             $ harcelement = False
             $ ignorer = True
 
@@ -206,6 +214,7 @@ label chapter2:
             $ lena_trust -= 3
             $ harcelement = False
             $ harceleur = True
+            $ bad_choice += 1
 
             jump harcelerLena
 
@@ -253,10 +262,13 @@ label chapter3 :
     "Les élèves écrivent, la craie crisse au tableau. Le soleil tape fort à travers les vitres. Pourtant, Lena porte un large pull en col roulé."
     "Yasmine, assise à côté, l’observe du coin de l’œil."
     "Lorsque Lena soulève la manche pour écrire, une série de fines cicatrices pâles se dévoile un instant sur son avant-bras. Yasmine retient sa respiration."
-    "Que doit-elle faire ?"
+    
     menu:
+        "Que doit-elle faire ?"
+
         "En parler directement avec Lena":
             $ lena_trust += 1
+            $ good_choice += 1
             jump enParler
         "Espionner son téléphone":
             $ indice += 1
@@ -264,6 +276,7 @@ label chapter3 :
 
         "Ne rien faire":
             $ lena_trust -= 1
+            $ bad_choice += 1
             jump rienFaire
 
             
@@ -332,17 +345,21 @@ label chapter4:
     play music "audio/Late Night Radio.mp3" fadeout 1.0 loop
     "Assise à son bureau, lumière tamisée, Yasmine tape frénétiquement sur son clavier."
     "La pluie claque contre la vitre. Elle veut comprendre. Elle veut agir."
-    "Elle réfléchit à un moyen de mener l'enquête..."
 
     menu:
+        "Elle réfléchit à un moyen de mener l'enquête..."
+
         "Demander à Lena directement":
             $ lena_trust += 1
+            $ good_choice += 1
             jump demanderDirect
         "Chercher sur les réseaux sociaux":
             $ indice += 1
+            $ good_choice += 1
             jump rechercheReseaux
         "Ne pas chercher à comprendre":
             $ lena_trust -= 1
+            $ bad_choice += 1
             jump nePasComprendre
 
 
@@ -400,18 +417,22 @@ label chapter5:
     scene bg_frontGate_day with fade
     play music "audio/Morning.mp3"
     "Yasmine se tient devant le portail de son école. Les événements de ces derniers jours la hantent encore."
-    "Aujourd'hui il fallait prendre une décision. Elle ne peut pas continuer comme ça plus longtemps."
 
     menu:
+        "Aujourd'hui il fallait prendre une décision. Elle ne peut pas continuer comme ça plus longtemps."
+
         "Soutenir Lena et prévenir un adulte":
             $ lena_trust += 1
+            $ good_choice += 1
             jump soutenirLena
         
         "Se venger en attaquant le garçon sur les réseaux" if indice == 2:
+            $ good_choice += 1
             jump seVenger
         
         "Abandonner Lena":
             $ lena_trust -= 1
+            $ bad_choice += 1
             jump trahirLena
 
 label soutenirLena:
@@ -448,7 +469,8 @@ label soutenirLena:
             l "Ne refais plus jamais ça. Je ne comptais plus te parler."
     "Enfin les deux collégiennes peuvent aller de l'avant. Dans ce genre de situations, il est important de parler à un adulte de confiance."
     "L'harcelement qu'a subi Lena ne disparaitra pas du jour au lendemain. Cependant, c'est un premier pas vers l'arrêt de l'harcelement et vers la guérison de Lena."
-    l "Tu crois que tout se passera bien."
+    show Lena_anxious at center
+    l "Tu crois que tout se passera bien ?"
     y "J'en suis persuadée. Et je serai toujours là pour toi."
 
     scene bg_black_screen with fade:
@@ -456,6 +478,8 @@ label soutenirLena:
         yalign 0.2
         zoom 2.0
     centered "Parler, c’est briser le silence.\nUn simple soutien peut sauver une vie."
+    centered "Nombre de bons choix : [good_choice]"
+    centered "Nombre de mauvais choix : [bad_choice]"
     centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
@@ -492,6 +516,8 @@ label seVenger:
         yalign 0.2
         zoom 2.0
     centered "Se venger par le cyberharcèlement, c’est choisir de blesser au lieu de guérir — tu ne répares rien, tu reproduis ce qui a détruit."
+    centered "Nombre de bons choix : [good_choice]"
+    centered "Nombre de mauvais choix : [bad_choice]"
     centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
@@ -515,6 +541,8 @@ label trahirLena:
         yalign 0.2
         zoom 2.0
     centered "Se taire, c’est laisser la peur gagner — face au cyberharcèlement, chaque silence est une complicité de trop."
+    centered "Nombre de bons choix : [good_choice]"
+    centered "Nombre de mauvais choix : [bad_choice]"
     centered "{size=+75}{cps=8}{color=#ffffff}CRÉDITS{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}Scénario: Étudiants de Louise Michel{/color}{/cps}{/size}{p=5.0}{nw}"
     centered "{size=+75}{cps=8}{color=#ffffff}programmation: Vegacy{/color}{/cps}{/size}{p=5.0}{nw}"
