@@ -37,6 +37,7 @@ image bg_frontGate_evening = "frontGate_evening.jpg"
 image bg_frontGate_night = "frontGate_night.jpg"
 image bg_courtyard_day = "courtyard_day.jpg"
 image bg_cpe_day = "bg_cpe_day.jpg"
+image bg_cpe_evening = "bg_cpe_evening.jpg"
 
 #roadToSchool
 image bg_roadToSchool_day = "roadToSchool_day.jpg"
@@ -530,6 +531,18 @@ label trahirLena:
     "Elle ne veut pas s'impliquer. Trop lourd. Trop dangereux."
     "Elle se convainc que ce n'est pas son rôle. Que quelqu’un d’autre finira bien par faire quelque chose."
     "Petit à petit, Yasmine s'éloigne de Lena, la laissant plus seule que jamais."
+
+    if harceleur == True: 
+        scene bg_frontGate_evening with fade
+        cpe "Yasmine tu pourrais venir avec nous ? Tes parents sont au bureau avec nous, ne t'en fais pas."
+        "Avant qu'elle puisse rentrer chez elle, l'adolescente se fait interpeller par les surveillants."
+        "Elle sait qu'elle va passer un mauvais quart d'heure."
+
+        scene bg_cpe_evening with dissolve
+        "Lors de cette réunion, le directeur explique à Yasmine qu'il a été mis au courant de ses agissements."
+        "Les preuves contre elle sont indéniables. Elle est complètement incriminée dans l'harcèlement de Lena."
+        "Yasmine et ses autres harceleurs vont tous subir la même peine : une exclusion définitive de l'établissement, ainsi qu'une amende de 30 000€. Les autorités compétentes ont été averti. "
+
 
     scene bg_bedroom_night_lightOff with dissolve
     "Le soir venu, Yasmine est allongée sur son lit. Le silence est pesant."
